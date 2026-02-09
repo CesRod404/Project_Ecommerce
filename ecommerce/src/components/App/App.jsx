@@ -1,20 +1,18 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import MainLayout from './components/MainLayout'
-import Home from './components/Home/Home'
 
-import CatalogoBautizo from './components/Bautizo/CatalogoBautizo'
-import DetalleBautizo from './components/Bautizo/DetalleBautizo'
-import CatalogoNinas from './components/Ninas/CatalogoNinas'
-import DetalleNinas from './components/Ninas/DetalleNinas'
-import CatalogoNinos from './components/Ninos/CatalogoNinos'
-import DetalleNinos from './components/Ninos/DetalleNinos'
-import CatalogoAccesorios from './components/Accesorios/CatalogoAccesorios'
-import DetalleAccesorios from './components/Accesorios/DetalleAccesorios'
-import Contacto from './components/Contacto'
+import MainLayout from '../MainLayout'
+import Home from '../Home/Home'
+
+import CatalogoBautizo from '../Bautizo/CatalogoBautizo'
+import DetalleBautizo from '../Bautizo/DetalleBautizo'
+import CatalogoNinas from '../Ninas/CatalogoNinas'
+import DetalleNinas from '../Ninas/DetalleNinas'
+import CatalogoNinos from '../Ninos/CatalogoNinos'
+import DetalleNinos from '../Ninos/DetalleNinos'
+import CatalogoAccesorios from '../Accesorios/CatalogoAccesorios'
+import DetalleAccesorios from '../Accesorios/DetalleAccesorios'
+import Contacto from '../Contacto'
 
 
 function App() {
