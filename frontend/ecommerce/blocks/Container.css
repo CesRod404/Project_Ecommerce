@@ -1,0 +1,81 @@
+/* ====== Contenedor principal ====== */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  font-family: "Inter", sans-serif;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  position: sticky; /* 👈 se queda fijo arriba */
+  top: 0;
+  z-index: 1000;
+}
+
+/* ====== Logo principal ====== */
+.logo_principal {
+  width: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo_principal:hover {
+  transform: scale(1.1);
+}
+
+/* ====== Menú ====== */
+.menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 4px;
+}
+
+.menu__link:hover {
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+.menu__link.active {
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+/* ====== Iconos lado derecho ====== */
+.container__logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container__login img,
+.logo_corazon,
+.logo_carrito {
+  width: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.container__login img:hover,
+.logo_corazon:hover,
+.logo_carrito:hover {
+  transform: scale(1.15);
+  filter: brightness(0.8);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .menu {
+    display: none; /* 👈 ocultar menú en móviles */
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}

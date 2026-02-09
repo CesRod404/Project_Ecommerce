@@ -1,0 +1,15 @@
+@import url(../vendor/normalize.css);
+@import url(../blocks/Card.css);
+@import url(../blocks/Home.css);
+@import url(../blocks/Container.css);
+@import url(../blocks/CatalogoBautizo.css);
+@import url(../blocks/DetalleBautizo.css);
+@import url(../blocks/CatalogoNinas.css);
+@import url(../blocks/DetalleNinas.css);
+@import url(../blocks/CatalogoNinos.css);
+@import url(../blocks/DetalleNinos.css);
+@import url(../blocks/DetalleAccesorios.css);
+@import url(../blocks/CatalogoAccesorios.css);
+@import url(../blocks/Contacto.css);
+
+
