@@ -16,6 +16,7 @@ export default function NavBar(){
             <img src={logoPrincipal} alt="Logo de tienda" className='logo_principal'/>
             <nav className="menu">
                 <NavLink to='/' className="menu__link" >Inicio</NavLink>
+                <NavLink to='/catalogo' className="menu__link" >Catalogo</NavLink>
                 <NavLink to='/bautizo' className="menu__link">Bautizo</NavLink>
                 <NavLink to='/ninas' className="menu__link">Niñas</NavLink>
                 <NavLink to='/ninos' className="menu__link">Niños</NavLink>

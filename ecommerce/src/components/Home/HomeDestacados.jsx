@@ -1,12 +1,14 @@
 import BautizoNino from "../../images/BautizoNinoDestacado.jpeg"
 
+import{NavLink} from 'react-router-dom'
+
 export default function HomeDestacados() {
   return (
     <section className="home-destacados">
       <div className="home-destacados__header">
         <p>Destacados</p>
         <h4>Productos Favoritos</h4>
-        <button className="home-destacados__button">Ver Todo el catálogo</button>
+        <NavLink to="/catalogo" className="home-destacados__button">Ver Todo el catálogo</NavLink>
       </div>
 
       <div className="home-destacados__content">
