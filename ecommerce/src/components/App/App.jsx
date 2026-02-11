@@ -13,7 +13,7 @@ import DetalleNinos from '../Ninos/DetalleNinos'
 import CatalogoAccesorios from '../Accesorios/CatalogoAccesorios'
 import DetalleAccesorios from '../Accesorios/DetalleAccesorios'
 import Contacto from '../Contacto'
-
+import CatalogoApi from '../CatalogoApi'
 
 function App() {
   
@@ -32,8 +32,8 @@ function App() {
           <Route path="accesorios" element={<CatalogoAccesorios/>}/>
           <Route path="accesorios/:id" element={<DetalleAccesorios/>}/>
           <Route path="contacto" element={<Contacto/>}/>
-
-
+          <Route path="catalogo" element={<CatalogoApi/>}/>
+          
 
         </Route>
       </Routes>

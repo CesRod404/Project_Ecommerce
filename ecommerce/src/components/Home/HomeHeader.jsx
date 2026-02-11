@@ -1,3 +1,5 @@
+import{NavLink} from 'react-router-dom'
+
 export default function HomeHeader() {
   return (
     <header className="home-header">
@@ -9,12 +11,12 @@ export default function HomeHeader() {
         diseñados con amor para los más pequeños de la casa.
       </p>
       <div className="home-header__buttons">
-        <button className="home-header__button home-header__button--black">
+        <NavLink className="home-header__button home-header__button--black">
           Ver colección de Bautizo
-        </button>
-        <button className="home-header__button home-header__button--white">
+        </NavLink>
+        <NavLink to="/catalogo" className="home-header__button home-header__button--white">
           Explorar Catálogo
-        </button>
+        </NavLink>
       </div>
     </header>
   );
