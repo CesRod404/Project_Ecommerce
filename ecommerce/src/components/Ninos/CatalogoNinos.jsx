@@ -9,9 +9,10 @@ export default function CatalogoNinos() {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [likes, setLikes] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/productos/categoria/ropa-niño")
+    fetch(`${API_URL}/api/productos/categoria/ropa-niño`)
       .then(res => res.json())
       .then(data => setProductos(data))
       .finally(() => setLoading(false));
@@ -20,7 +21,7 @@ export default function CatalogoNinos() {
   useEffect(() => {
     if (!token) return;
 
-    fetch("http://localhost:5000/api/usuario/mis-productos", {
+    fetch(`${API_URL}/api/usuario/mis-productos`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())

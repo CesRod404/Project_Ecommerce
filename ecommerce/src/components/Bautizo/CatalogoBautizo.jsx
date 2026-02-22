@@ -10,17 +10,18 @@ export default function CatalogoBautizo() {
   const [ninos, setNinos] = useState([]);
   const [likes, setLikes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const cargar = async () => {
 
       const resNinas = await fetch(
-        "http://localhost:5000/api/productos/categoria/bautizo-niña"
+        `${API_URL}/api/productos/categoria/bautizo-niña`
       );
       const dataNinas = await resNinas.json();
 
       const resNinos = await fetch(
-        "http://localhost:5000/api/productos/categoria/bautizo-niño"
+        `${API_URL}/api/productos/categoria/bautizo-niño`
       );
       const dataNinos = await resNinos.json();
 
@@ -35,7 +36,7 @@ export default function CatalogoBautizo() {
   useEffect(() => {
     if (!token) return;
 
-    fetch("http://localhost:5000/api/usuario/mis-productos", {
+    fetch(`${API_URL}/api/usuario/mis-productos`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
