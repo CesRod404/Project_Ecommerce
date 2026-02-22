@@ -1,60 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState, useContext} from "react";
 import { NavLink } from "react-router-dom";
-
-// Ejemplo de productos para niñas
-const productosNinas = [
-  {
-    id: "1",
-    nombre: "Conjunto Invierno",
-    imagen: "/images/conjuntoInvierno.jpeg",
-    descripcion: "Conjunto cálido y elegante para temporada de invierno."
-  },
-  {
-    id: "2",
-    nombre: "Vestido Floral",
-    imagen: "/images/vestidoFloral.jpeg",
-    descripcion: "Vestido ligero con estampado floral para ocasiones especiales."
-  },
-  {
-    id: "3",
-    nombre: "Abrigo Rosa",
-    imagen: "/images/abrigoRosa.jpeg",
-    descripcion: "Abrigo acolchado en tono rosa pastel, ideal para días fríos."
-  }
-];
+import { AuthContext } from "../AuthContext";
+import ProductoCard from "../ProductoCard";
 
 export default function CatalogoNinas() {
-  const [likes, setLikes] = useState({});
 
-  const toggleLike = (id) => {
-    setLikes((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
+  const { token } = useContext(AuthContext);
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [likes, setLikes] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/productos/categoria/ropa-niña")
+      .then(res => res.json())
+      .then(data => setProductos(data))
+      .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    if (!token) return;
+
+    fetch("http://localhost:5000/api/usuario/mis-productos", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(data => setLikes(data.likes.map(p => p._id)));
+
+  }, [token]);
+
+  if (loading) return <p>Cargando productos...</p>;
+
+  if (productos.length === 0)
+    return <p>No hay productos en la categoría Niñas</p>;
 
   return (
     <section className="catalogo-ninas">
       <h2>Catálogo Niñas</h2>
-      <div className="catalogo-ninas__cards">
-        {productosNinas.map((producto) => (
-          <div key={producto.id} className="catalogo-ninas__card">
-            <img src={producto.imagen} alt={producto.nombre} />
-            <h3>{producto.nombre}</h3>
 
-            {/* Botón de Like */}
-            <button
-              className={`like-button ${likes[producto.id] ? "liked" : ""}`}
-              onClick={() => toggleLike(producto.id)}
-            >
-              {likes[producto.id] ? "❤️" : "🤍"}
-            </button>
-
-            {/* Link a la página de detalle */}
-            <NavLink to={`/ninas/${producto.id}`} className="detalle-link">
-              Ver más
-            </NavLink>
-          </div>
+      <div className="catalogo-grid">
+        {productos.map(producto => (
+          <ProductoCard 
+          key={producto._id} 
+          producto={producto} 
+          likes={likes}
+          setLikes={setLikes}
+          />
         ))}
       </div>
     </section>

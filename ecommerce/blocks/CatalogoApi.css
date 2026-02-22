@@ -1,68 +1,86 @@
 .catalogo-api {
-  padding: 2rem;
-  background: #f9f9f9;
+  padding: 40px 20px;
+  max-width: 1300px;
+  margin: auto;
 }
 
-.catalogo-api h2 {
+.catalogo-title {
   text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: #222;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-.catalogo-api__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.catalogo-api__card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1rem;
+.catalogo-filter {
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 40px;
 }
 
-.catalogo-api__card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.catalogo-api__card img {
-  width: 100%;
-  height: 180px;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
-}
-
-.catalogo-api__card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0.5rem 0;
-}
-
-.catalogo-api__card p {
-  font-size: 1rem;
-  color: #555;
-}
-
-button {
-  display: block;
-  margin: 2rem auto 0;
-  padding: 0.8rem 1.5rem;
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
+.catalogo-filter select {
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  background: white;
+  transition: all 0.3s ease;
 }
 
-button:hover {
-  background: #000;
-  transform: scale(1.05);
+.catalogo-filter select:hover {
+  border-color: #888;
+}
+
+.catalogo-section {
+  margin-bottom: 60px;
+}
+
+.categoria-title {
+  font-size: 24px;
+  margin-bottom: 25px;
+  border-left: 5px solid #000;
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  padding: 50px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .catalogo-title {
+    font-size: 26px;
+  }
+
+  .categoria-title {
+    font-size: 20px;
+  }
+
+  .catalogo-grid {
+    gap: 15px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .catalogo-api {
+    padding: 20px 10px;
+  }
+
+  .catalogo-filter select {
+    width: 100%;
+  }
+
 }

@@ -8,8 +8,7 @@ export default function HomeFooter() {
             Vestimos los momentos más especiales de los más pequeños con amor,
             elegancia y la mejor calidad.
           </p>
-          <img src="" alt="" className="home-footer__logo" />
-          <img src="" alt="" className="home-footer__logo" />
+  
         </div>
 
         <div className="home-footer__content">
@@ -23,9 +22,7 @@ export default function HomeFooter() {
 
         <div className="home-footer__content">
           <h6>Contacto</h6>
-          <img src="" alt="" className="home-footer__logo-contact" />
           <p>+52 4939499834</p>
-          <img src="" alt="" className="home-footer__logo-contact" />
           <p>cesarnef@outlook.com</p>
         </div>
       </div>

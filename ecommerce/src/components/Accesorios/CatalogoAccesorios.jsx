@@ -1,62 +1,53 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-
-// Ejemplo de productos para accesorios
-const productosAccesorios = [
-  {
-    id: "1",
-    nombre: "Fular Bautizo",
-    imagen: "/images/fularBautizo.jpeg",
-    descripcion: "Accesorio delicado que complementa el outfit de bautizo."
-  },
-  {
-    id: "2",
-    nombre: "Diadema Floral",
-    imagen: "/images/diademaFloral.jpeg",
-    descripcion: "Diadema con flores decorativas para ocasiones especiales."
-  },
-  {
-    id: "3",
-    nombre: "Zapatos Elegantes",
-    imagen: "/images/zapatosElegantes.jpeg",
-    descripcion: "Zapatos cómodos y elegantes para ceremonia."
-  }
-];
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../AuthContext";
+import ProductoCard from "../ProductoCard";
 
 export default function CatalogoAccesorios() {
-  const [likes, setLikes] = useState({});
 
-  const toggleLike = (id) => {
-    setLikes((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
+  const { token } = useContext(AuthContext);
+
+  const [productos, setProductos] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/productos/categoria/accesorio")
+      .then(res => res.json())
+      .then(data => setProductos(data))
+      .finally(() => setLoading(false));
+  }, []);
+
+  
+  useEffect(() => {
+    if (!token) return;
+
+    fetch("http://localhost:5000/api/usuario/mis-productos", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(data => setLikes(data.likes.map(p => p._id)));
+
+  }, [token]);
+
+  if (loading) return <p>Cargando accesorios...</p>;
 
   return (
     <section className="catalogo-accesorios">
-      <h2>Catálogo Accesorios</h2>
-      <div className="catalogo-accesorios__cards">
-        {productosAccesorios.map((producto) => (
-          <div key={producto.id} className="catalogo-accesorios__card">
-            <img src={producto.imagen} alt={producto.nombre} />
-            <h3>{producto.nombre}</h3>
 
-            {/* Botón de Like */}
-            <button
-              className={`like-button ${likes[producto.id] ? "liked" : ""}`}
-              onClick={() => toggleLike(producto.id)}
-            >
-              {likes[producto.id] ? "❤️" : "🤍"}
-            </button>
+      <h2>Accesorios</h2>
 
-            {/* Link a la página de detalle */}
-            <NavLink to={`/accesorios/${producto.id}`} className="detalle-link">
-              Ver más
-            </NavLink>
-          </div>
+      <div className="catalogo-grid">
+        {productos.map(producto => (
+          <ProductoCard
+            key={producto._id}
+            producto={producto}
+            likes={likes}
+            setLikes={setLikes}
+          />
         ))}
       </div>
+
     </section>
   );
 }

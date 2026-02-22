@@ -7,20 +7,20 @@
   font-family: "Inter", sans-serif;
   border-bottom: 1px solid #ddd;
   background-color: #fff;
-  position: sticky; /* 👈 se queda fijo arriba */
+  position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 /* ====== Logo principal ====== */
 .logo_principal {
-  width: 50px;
+  height: 60px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .logo_principal:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* ====== Menú ====== */
@@ -33,46 +33,105 @@
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
   padding-bottom: 4px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
-.menu__link:hover {
-  color: #000;
-  border-bottom: 2px solid #000;
-}
-
+.menu__link:hover,
 .menu__link.active {
   color: #000;
   border-bottom: 2px solid #000;
 }
 
-/* ====== Iconos lado derecho ====== */
+/* ====== Contenedor iconos ====== */
 .container__logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.container__login img,
-.logo_corazon,
-.logo_carrito {
-  width: 28px;
+/* ====== Wrapper uniforme ====== */
+.icon-wrapper {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ====== Botones y links EXACTAMENTE iguales ====== */
+.icon-button,
+.icon-link {
+  all: unset;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.2s ease;
 }
 
-.container__login img:hover,
-.logo_corazon:hover,
-.logo_carrito:hover {
-  transform: scale(1.15);
-  filter: brightness(0.8);
+.icon-button:hover,
+.icon-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ====== CENTRADO ABSOLUTO REAL ====== */
+.icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hover animación */
+.icon-button:hover .icon-img,
+.icon-link:hover .icon-img {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* ====== Dropdown ====== */
+.dropdown-menu {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #cc0000;
 }
 
 /* ====== Responsive ====== */
 @media (max-width: 768px) {
   .menu {
-    display: none; /* 👈 ocultar menú en móviles */
+    display: none;
   }
 
   .container {

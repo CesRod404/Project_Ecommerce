@@ -1,62 +1,77 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-
-// Ejemplo de productos (puedes traerlos de un JSON o API)
-const productosBautizo = [
-  {
-    id: 1,
-    nombre: "Vestido Celestial",
-    imagen: "/images/vestidoCelestial.jpeg",
-    descripcion: "Vestido elegante con detalles bordados para bautizo."
-  },
-  {
-    id: 2,
-    nombre: "Traje Angelical",
-    imagen: "/images/trajeAngelical.jpeg",
-    descripcion: "Traje clásico para niño con accesorios incluidos."
-  },
-  {
-    id: 3,
-    nombre: "Fular Bautizo",
-    imagen: "/images/fularBautizo.jpeg",
-    descripcion: "Accesorio delicado que complementa el outfit."
-  }
-];
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../AuthContext";
+import ProductoCard from "../ProductoCard";
 
 export default function CatalogoBautizo() {
-  const [likes, setLikes] = useState({});
 
-  const toggleLike = (id) => {
-    setLikes((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
+  const { token } = useContext(AuthContext);
+
+  const [ninas, setNinas] = useState([]);
+  const [ninos, setNinos] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const cargar = async () => {
+
+      const resNinas = await fetch(
+        "http://localhost:5000/api/productos/categoria/bautizo-niña"
+      );
+      const dataNinas = await resNinas.json();
+
+      const resNinos = await fetch(
+        "http://localhost:5000/api/productos/categoria/bautizo-niño"
+      );
+      const dataNinos = await resNinos.json();
+
+      setNinas(dataNinas);
+      setNinos(dataNinos);
+      setLoading(false);
+    };
+
+    cargar();
+  }, []);
+
+  useEffect(() => {
+    if (!token) return;
+
+    fetch("http://localhost:5000/api/usuario/mis-productos", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(data => setLikes(data.likes.map(p => p._id)));
+
+  }, [token]);
+
+  if (loading) return <p>Cargando...</p>;
 
   return (
-    <section className="catalogo-bautizo">
-      <h2>Catálogo Bautizo</h2>
-      <div className="catalogo-bautizo__cards">
-        {productosBautizo.map((producto) => (
-          <div key={producto.id} className="catalogo-bautizo__card">
-            <img src={producto.imagen} alt={producto.nombre} />
-            <h3>{producto.nombre}</h3>
+    <section>
 
-            {/* Botón de Like */}
-            <button
-              className={`like-button ${likes[producto.id] ? "liked" : ""}`}
-              onClick={() => toggleLike(producto.id)}
-            >
-              {likes[producto.id] ? "❤️" : "🤍"}
-            </button>
-
-            {/* Link a la página de detalle */}
-            <NavLink to={`/bautizo/${producto.id}`} className="detalle-link">
-              Ver más
-            </NavLink>
-          </div>
+      <h2 id="bautizo-nina">Bautizo Niña</h2>
+      <div className="catalogo-grid">
+        {ninas.map(producto => (
+          <ProductoCard
+            key={producto._id}
+            producto={producto}
+            likes={likes}
+            setLikes={setLikes}
+          />
         ))}
       </div>
+
+      <h2 id="bautizo-nino"style={{ marginTop: "50px" }}>Bautizo Niño</h2>
+      <div className="catalogo-grid">
+        {ninos.map(producto => (
+          <ProductoCard
+            key={producto._id}
+            producto={producto}
+            likes={likes}
+            setLikes={setLikes}
+          />
+        ))}
+      </div>
+
     </section>
   );
 }

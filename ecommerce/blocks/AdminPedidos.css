@@ -1,0 +1,127 @@
+.admin-container {
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.admin-container h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.filtro-select {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.tabla-wrapper {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+thead {
+  background: #f8f9fa;
+}
+
+th, td {
+  padding: 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 2px solid #eee;
+}
+
+td {
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.producto-item {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.direccion-cell {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.total {
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.estado-select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.estado-select.por_confirmar {
+  background: #fff3cd;
+}
+
+.estado-select.confirmado {
+  background: #d4edda;
+}
+
+.estado-select.en_camino {
+  background: #cce5ff;
+}
+
+.estado-select.cancelado {
+  background: #f8d7da;
+}
+
+.btn-eliminar {
+  background: #dc3545;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.btn-eliminar:hover {
+  background: #b02a37;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 20px 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  .btn-eliminar {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,142 @@
+.catalogo-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.catalogo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagen */
+.catalogo-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.4s ease;
+}
+
+.catalogo-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Nombre */
+.catalogo-card h3 {
+  font-size: 17px;
+  margin: 14px 0 6px;
+  font-weight: 500;
+  color: #222;
+  min-height: 45px;
+}
+
+/* Precio */
+.catalogo-card p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+/* Corazón */
+.catalogo-card div[style] {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.catalogo-card div[style]:hover {
+  transform: scale(1.2);
+}
+
+/* Botón carrito */
+.catalogo-card button {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #000;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mensaje-carrito {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #28a745;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.catalogo-card button:hover {
+  background: #333;
+}
+
+/* Quitar subrayado del NavLink */
+.catalogo-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .catalogo-card img {
+    height: 200px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .catalogo-card {
+    padding: 14px;
+  }
+
+  .catalogo-card img {
+    height: 180px;
+  }
+
+  .catalogo-card h3 {
+    font-size: 15px;
+  }
+
+  .catalogo-card p {
+    font-size: 16px;
+  }
+
+  .catalogo-card button {
+    font-size: 13px;
+  }
+}

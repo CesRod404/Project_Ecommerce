@@ -11,7 +11,7 @@ export default function HomeHeader() {
         diseñados con amor para los más pequeños de la casa.
       </p>
       <div className="home-header__buttons">
-        <NavLink className="home-header__button home-header__button--black">
+        <NavLink to="/bautizo" className="home-header__button home-header__button--black">
           Ver colección de Bautizo
         </NavLink>
         <NavLink to="/catalogo" className="home-header__button home-header__button--white">
