@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext";
 
 import corazon from "../images/corazon.png";
 import carrito from "../images/carrito-de-compras.png";
-import logoPrincipal from "../images/logoPrincipal.png";
+import logoPrincipal from "../images/ropa-de-bebe.png";
 import acceso from "../images/acceso.png";
 import accesoActivo from "../images/accesoVerde.png";
 
@@ -29,9 +29,20 @@ export default function NavBar() {
 
   return (
     <div className="container">
+      <NavLink to={"/"}>
       <img src={logoPrincipal} alt="Logo de tienda" className="logo_principal" />
+      </NavLink>
 
-      <nav className="menu">
+      {/* Botón hamburguesa solo visible en móvil */}
+      <button 
+        onClick={() => setShowMenu(!showMenu)} 
+        className="hamburger"
+      >
+        ☰
+      </button>
+
+
+      <nav className={`menu ${showMenu ? "menu--active" : ""}`}>
         <NavLink to="/" className="menu__link">Inicio</NavLink>
         <NavLink to="/catalogo" className="menu__link">Catálogo</NavLink>
         <NavLink to="/bautizo" className="menu__link">Bautizo</NavLink>

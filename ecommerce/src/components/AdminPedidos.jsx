@@ -55,7 +55,7 @@ export default function AdminPedidos() {
   const cambiarEstado = async (idPedido, nuevoEstado) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/pedidos/${idPedido}/estado`,
+        `${API_URL}/api/pedidos/${idPedido}/estado`,
         {
           method: "PUT",
           headers: {
@@ -88,7 +88,7 @@ export default function AdminPedidos() {
     try {
 
       const response = await fetch(
-        `http://localhost:5000/api/pedidos/${idPedido}`,
+        `${API_URL}/api/pedidos/${idPedido}`,
         {
           method: "DELETE",
           headers: {

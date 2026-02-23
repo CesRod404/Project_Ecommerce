@@ -1,3 +1,8 @@
+/* ====== Reset ====== */
+body {
+  margin: 0;
+}
+
 /* ====== Contenedor principal ====== */
 .container {
   display: flex;
@@ -12,23 +17,25 @@
   z-index: 1000;
 }
 
-/* ====== Logo principal ====== */
+/* ====== Logo ====== */
 .logo_principal {
   height: 60px;
   cursor: pointer;
   transition: transform 0.3s ease;
+  object-fit: contain;
 }
 
 .logo_principal:hover {
   transform: scale(1.05);
 }
 
-/* ====== Menú ====== */
+/* ====== Menú Desktop ====== */
 .menu {
   display: flex;
   gap: 2rem;
 }
 
+/* ====== Links ====== */
 .menu__link {
   text-decoration: none;
   color: #333;
@@ -43,14 +50,13 @@
   border-bottom: 2px solid #000;
 }
 
-/* ====== Contenedor iconos ====== */
+/* ====== Iconos ====== */
 .container__logo {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 
-/* ====== Wrapper uniforme ====== */
 .icon-wrapper {
   width: 44px;
   height: 44px;
@@ -60,7 +66,6 @@
   justify-content: center;
 }
 
-/* ====== Botones y links EXACTAMENTE iguales ====== */
 .icon-button,
 .icon-link {
   all: unset;
@@ -80,7 +85,6 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* ====== CENTRADO ABSOLUTO REAL ====== */
 .icon-img {
   width: 24px;
   height: 24px;
@@ -91,7 +95,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* Hover animación */
 .icon-button:hover .icon-img,
 .icon-link:hover .icon-img {
   transform: translate(-50%, -50%) scale(1.1);
@@ -128,13 +131,63 @@
   background-color: #cc0000;
 }
 
-/* ====== Responsive ====== */
+/* ====== Hamburguesa ====== */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  /* Oculto completamente */
   .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    gap: 0;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+  }
+
+  /* Visible cuando se activa */
+  .menu--active {
+    display: flex;
+  }
+
+  .menu__link {
+    width: 100%;
+    padding: 14px 20px;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+/* ================= DESKTOP ================= */
+@media (min-width: 769px) {
+
+  .hamburger {
     display: none;
   }
 
-  .container {
-    padding: 1rem;
+  .menu {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 0;
+    border: none;
   }
+
 }
