@@ -62,25 +62,26 @@ export default function ProductoCard({
     <div className="catalogo-card">
       <NavLink to={`/producto/${producto._id}`}>
 
-      <img
-        src={`${API_URL}${producto.imagen}`}
-        alt={producto.nombre}
-      />
-
+    
+        <img
+          src={`${API_URL}${producto.imagen}`}
+          alt={producto.nombre}
+        />
       <h3>{producto.nombre}</h3>
       <p>${producto.precio}</p>
+  
 
-      
         
       </NavLink>
       <div
+        className="favorite-heart"
         onClick={toggleLike}
         style={{ cursor: "pointer", fontSize: "22px" }}
       >
         {liked ? "❤️" : "🤍"}
       </div>
 
-      <button onClick={agregarCarrito}>
+      <button className="add-to-cart-btn" onClick={agregarCarrito}>
         Agregar al carrito
       </button>
 
